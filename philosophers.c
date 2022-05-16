@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/16 14:39:26 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:03:30 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@
 
 /////   For Learning Purposes   ////
 
-int mails;
+int mails = 0;
 pthread_t mutex;
-
-mails = 0;
-
 
 void	*routine()
 {
 	int i;
 	
 	i = 0;
-	while (i < 10000000)
+	while (i < 1000000)
 	{
 		pthread_mutex_lock(&mutex);
 		mails++;
@@ -42,26 +39,32 @@ void	*routine()
 
 int		main(int argc, char **argv)
 {
-	pthread_t t1;
-	pthread_t t2;
-	
+	pthread_t t[4];
+	// pthread_t t2;
+	// pthread_t t3;
+	// pthread_t t4;
+	int		i;
+
+	i = 0;
 	pthread_mutex_init(&mutex, NULL);
-	
-	if (pthread_create(&t1,  NULL, &routine, NULL) != 0)
+	while (i < 4)
 	{
-		return 1;
+		if (pthread_create(&t[i], NULL, &routine, NULL) != 0)
+		{
+			return (1);
+		}
+		printf("Thread %d Created\n", i);
+		i++;
 	}
-	if (pthread_join(t1, NULL) != 0)
+	i = 0;
+	while (i < 4)
 	{
-		return 12;
-	}
-	if (pthread_create(&t2, NULL, &routine, NULL) != 0)
-	{
-		return 2;
-	}
-	if (pthread_join(t2, NULL) != 0)
-	{
-		return 21;
+		if (pthread_join(t[i], NULL) != 0)
+		{
+			return 2;
+		}
+		printf("Finished Joining Thread %d\n", i);
+		i++;
 	}
 	pthread_mutex_destroy(&mutex);
 	printf("The Final Number of %d\n", mails);
