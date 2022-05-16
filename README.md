@@ -17,3 +17,8 @@ Steps Necessary in Building the Program:
 
 2. Argument Checkers
 3. 
+
+
+
+Random:
+1. gcc -S filename.c  Compiles C Code into Assembly Code(.s file)
