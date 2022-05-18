@@ -12,13 +12,14 @@ Tutorials:
 
 
 
-Steps Necessary in Building the Program:
-1. Add "-pthread" to tasks.json File to be able to Create and Join Threads, otherwise must use the -pthread Flag when Compiling (gcc -g -pthread file.c)
-
-2. Argument Checkers
-3. 
+Steps Necessary in Building the Program: 
+1. Argument Checkers
+2. Initialize Arguments into Structs
+3. Create the Threads
+4. 
 
 
 
 Random:
-1. gcc -S filename.c  Compiles C Code into Assembly Code(.s file)
+1. Add "-pthread" to tasks.json File to be able to Create and Join Threads, otherwise must use the -pthread Flag when Compiling (gcc -g -pthread file.c)
+2. gcc -S filename.c  Compiles C Code into Assembly Code(.s file)
