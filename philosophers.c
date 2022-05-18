@@ -19,42 +19,22 @@ int	main(int argc, char **argv)
 {
 	t_game			table;
 	pthread_t		*thread;
-	t_philosopher	*philo;
-	int				i;
+	// t_philosopher	*philosopher;
+	// int				i;
 
-	i = 0;
-	if (!is_number_of_args_four(argc, argv) || !is_args_positive(argc, argv) \
-	|| !ft_isdigit(argc, argv))
+	// i = 0;
+
+	/* if (!is_number_of_args(argc) || !is_args_positive(argc, argv) || !ft_isdigit(argc, argv)) */
+	if (!is_number_of_args(argc) || !ft_isdigit(argc, argv))
 		return (-1);
-	if (!init)
+	if (!initialize_table(&table, argc, argv))
+		return (-2);
+	thread = malloc(sizeof(pthread_t *) * table.number_of_philos);
+	if (!thread)
+		return (-3);
+	
 	return (0);
 }
-
-int	initialize_table(t_game *table, int argc, char **argv)
-{
-	table->number_of_philos = ft_atoi(argv[1]);
-	table->time_to_die = ft_atoi(argv[2]);
-	table->time_to_eat = ft_atoi(argv[3]);
-	table->time_to_sleep = ft_atoi(argv[4]);
-	table->meals = -1;
-	if (argc == 6)
-		table->meals = ft_atoi(argv[5]);
-	table->end = -1;
-	
-
-	gettimeofday(&(table->start), NULL);
-	printf("%d", table->start);
-}
-
-
-
-
-
-
-
-
-
-
 
 
 

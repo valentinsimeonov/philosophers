@@ -12,11 +12,8 @@
 
 #include "philosophers.h"
 
-int		is_number_of_args(int argc, char** argv)
+int		is_number_of_args(int argc)
 {
-	int		i;
-
-	i = 1;
 	if (argc < 5 || argc > 6)
 	{
 		printf("Invalid Number of Arguments\n, Please Try Again!\n");
@@ -29,8 +26,8 @@ int		is_args_positive(int argc, char **argv)
 {
 	int	i;
 
-	i = 0;
-	while (i < argc)
+	i = 1;
+	while (i <= argc)
 	{
 		if (ft_atoi(argv[i]) <= 0)
 		{
@@ -50,8 +47,8 @@ int	ft_isdigit(int argc, char **argv)
 	while (i <= argc)
 	{
 		if (ft_atoi(argv[i]) >= '0' && ft_atoi(argv[i]) <= '9')
-			return (1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }

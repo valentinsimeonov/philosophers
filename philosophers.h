@@ -24,7 +24,7 @@ struct s_philosopher;
 
 typedef struct s_game
 {
-	struct s_philosopher **to_philo;
+	struct s_philosopher **to_philosopher;
 	pthread_mutex_t		m_print;
 	pthread_mutex_t		*m_forks;
 	struct timeval		start;
@@ -41,7 +41,7 @@ typedef struct s_game
 typedef struct s_philosopher
 {
 	pthread_mutex_t			m_eat;
-	t_game					*to_settings;
+	t_game					*to_game;
 
 	int						last_meal;
 	int						meals;
@@ -51,15 +51,18 @@ typedef struct s_philosopher
 
 
 /* Checkers */
-int		is_number_of_args_four(int argc, char** argv);
+int		is_number_of_args(int argc);
 int		is_args_positive(int argc, char **argv);
-int	ft_isdigit(int argc, char **argv);
+int		ft_isdigit(int argc, char **argv);
 
 /* Utils */
 long	ft_atoi(const char *str);
 
+
 /* Initialising = Putting the Arguments in Structs */
-int	initialize_table(t_game *table, int argc, char **argv);
+int		initialize_table(t_game *table, int argc, char **argv);
+void	initialize_philosophers(t_game *table);
+void	initialize_forks(t_game *table);
 
 
 
