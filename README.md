@@ -22,19 +22,3 @@ Steps Necessary in Building the Program:
 
 Random:
 1. gcc -S filename.c  Compiles C Code into Assembly Code(.s file)
-
-
-
-Questions:
-1. In init.c Line 62 - Why pthread_mutex_init(&(settings->m_print), NULL); ?
-
-2. In init.c Line 63 - Why  settings->to_phils 
-
-3. How Do you Print a variable in a Struct?
-	printf("%d", table->start); --- Does not Work
-
-4. In init.c Line 46 - Why
-	pthread_mutex_init(&(ph->m_eat), NULL);
-
-5. In init.c Line 25 - Why
-	pthread_mutex_t *

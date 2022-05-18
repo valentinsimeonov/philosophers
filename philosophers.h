@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:55 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/16 21:23:13 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:01:36 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int		ft_isdigit(int argc, char **argv);
 
 /* Utils */
 long	ft_atoi(const char *str);
-
 
 /* Initialising = Putting the Arguments in Structs */
 int		initialize_table(t_game *table, int argc, char **argv);

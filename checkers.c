@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:29:25 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/16 20:44:56 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/18 20:44:50 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,23 @@ int		is_args_positive(int argc, char **argv)
 	return (1);
 }
 
-int	ft_isdigit(int argc, char **argv)
-{
-	int	i;
+// int	ft_isdigit(int argc, char **argv)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 1;
-	while (i <= argc)
-	{
-		if (ft_atoi(argv[i]) >= '0' && ft_atoi(argv[i]) <= '9')
-			return (0);
-		i++;
-	}
-	return (1);
-}
+// 	i = 1;
+// 	// j = 0;
+// 	while (i <= argc)
+// 	{
+// 		j = 0;
+// 		while (argv[i][j])
+// 		{
+// 			if (!(ft_atoi(&argv[i][j]) >= 0 && ft_atoi(&argv[i][j]) <= 9))
+// 				return (0);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (1);
+// }
