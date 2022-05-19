@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/19 20:00:06 by vsimeono          #+#    #+#             */
+/*   Updated: 2022/05/19 20:12:55 by vsimeono         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 
 #include "philosophers.h"
@@ -28,7 +39,7 @@ int	initialize_table(t_game *game, int argc, char **argv)
 }
 
 /* Outting the Argumets into the Philosopher Struct,
-Initialising the Mutex*/
+Initialising the Mutex */
 
 void	initialize_philosophers(t_game *game)
 {
@@ -40,9 +51,16 @@ void	initialize_philosophers(t_game *game)
 	{
 		philosopher = (t_philosopher *)malloc(sizeof(t_philosopher));
 		philosopher->to_game = game;
+
 		philosopher->id = i + 1;
+		// printf("%d\n", philosopher->id);
+
 		philosopher->last_meal = 0;
+		// printf("%d\n", philosopher->last_meal);
+
 		philosopher->meals = 0;
+		// printf("%d\n", philosopher->meals);
+
 		pthread_mutex_init(&(philosopher->m_eat), NULL);
 		game->to_philosopher[i] = philosopher;
 		i++;
@@ -50,7 +68,7 @@ void	initialize_philosophers(t_game *game)
 }
 
 /* Determining how many Forks should there be,
-Initialising the Mutex for Forks*/
+Initialising the Mutex for Forks */
 
 void	initialize_forks(t_game *game)
 {
@@ -64,3 +82,4 @@ void	initialize_forks(t_game *game)
 		j++;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/18 22:02:28 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/19 20:15:27 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*dinner(void *philo)
 	if (right == game->number_of_philos)
 	{
 		pthread_mutex_lock(game->m_forks);
-		print(philosopher, get_clock(game), "has Taken a Fork");
+		// print(philosopher, get_clock(game), "has Taken a Fork");
 		return (NULL);
 	}
 	if (philosopher->id % 2 == 0)
@@ -74,7 +74,7 @@ void	*dinner(void *philo)
 
 // void dining(t_game *game, t_philosopher *philosopher, int right, int left)
 // {
-// 	while (game->end == -1 && (game->number_of_philos == -1) \ 
+// 	while (game->end == -1 && (game->number_of_philos == -1) \
 // 	|| game->meals != philosopher->meals)
 // 	{
 		
