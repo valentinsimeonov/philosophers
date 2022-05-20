@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:33:40 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/18 20:10:58 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/20 21:08:11 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,39 @@ long	ft_atoi(const char *str)
 		i++;
 	}
 	return (num * sign);
+}
+
+int	ft_sum(int *arr, int len)
+{
+	int		i;
+	int		sum;
+	
+	i = 0;
+	sum = 0;
+	while (i < len)
+	{
+		sum += arr[i];
+		i++;
+	}
+	return (sum);
+}
+
+void	print(t_philosopher *philosopher, int msec, char *str)
+{
+	pthread_mutex_lock(&(philosopher->to_game->m_print));
+	if (philosopher->to_game->end == -1 || ft_strncmp(str, "died", 4) == 0)
+		printf("%i %i %s\n", msec, philosopher->id, str);
+	pthread_mutex_unlock(&(philosopher->to_game->m_print));
+}
+
+int		ft_strcmp(char *s1, char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && (s1[i] == s2[i]) && s1[i] != '\0')
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

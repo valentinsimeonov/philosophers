@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/19 20:15:27 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:58:29 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,45 +42,30 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-
-	
 	printf("Reached the end of Main");
 	return (0);
 }
 
-void	*dinner(void *philo)
+void	check_dead(t_game *game, t_philosopher *philosopher)
 {
-	t_philosopher	*philosopher;
-	t_game			*game;
-	int				left;
-	int				right;
-
-	philosopher = (t_philosopher *)philo;
-	game = philosopher->to_game;
-	left = philosopher->id - 1;
-	right = philosopher->id;
-	if (right == game->number_of_philos)
-	{
-		pthread_mutex_lock(game->m_forks);
-		// print(philosopher, get_clock(game), "has Taken a Fork");
-		return (NULL);
-	}
-	if (philosopher->id % 2 == 0)
-		usleep(game->time_to_eat * 500);
-	dining(game, philosopher, right, left);
+	int	miliseconds;
 	
-	return (NULL);
+	pthread_mutex_lock(&(philosopher->m_eat));
+	miliseconds = get_clock(game);
+	if (miliseconds > philosopher->last_meal + game->time_to_die)
+	{
+		game->end = 1;
+		print(philosopher, miliseconds, "died");
+		pthread_mutex_unlock(&(philosopher->m_eat));
+	}
+	else
+	{
+		pthread_mutex_unlock(&(philosopher->m_eat));
+		game->end = -1;
+	}
 }
 
-// void dining(t_game *game, t_philosopher *philosopher, int right, int left)
-// {
-// 	while (game->end == -1 && (game->number_of_philos == -1) \
-// 	|| game->meals != philosopher->meals)
-// 	{
-		
-// 	}
-// }
-
+void	wake_up(t_game)
 
 
 
