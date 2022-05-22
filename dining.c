@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 13:30:28 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 19:06:43 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/22 19:54:28 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void dining(t_game *game, t_philosopher *philosopher, int right, int left)
 		pthread_mutex_unlock(game->m_forks + right);
 		if (game->meals != -1 && game->meals == philosopher->meals)
 			return ;
-		print(philosopher, get_clock(game, "is sleeping"));
+		print(philosopher, get_clock(game), "is sleeping");
 		wake_up(game, game->time_to_sleep);
 		print(philosopher, get_clock(game), "is thinking");
 	}
@@ -84,7 +84,7 @@ void	dine(t_game *game)
 		while (i < game->number_of_philos && game->end == -1 && ft_sum(array, game->number_of_philos) < nbr_of_philos)
 		{
 			philosopher = game->to_philosopher[i];
-			check_if_dead(game, philosopher);
+			// check_if_dead(game, philosopher);
 			if (philosopher->meals == game->meals)
 				array[i] = 1;
 			i++;

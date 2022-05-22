@@ -1,6 +1,6 @@
 NAME = philo
 
-SRC = philosophers.c checkers.c utils.c initialize.c dining.c
+SRC = philosophers.c checkers.c utils.c initialize.c dining.c time_keeping.c
 
 INCLUDE = philosophers.h
 

@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:55 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 13:21:32 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/22 19:49:25 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ int		ft_isdigit(int argc, char **argv);
 
 /* Utils */
 long	ft_atoi(const char *str);
+int	ft_sum(int *arr, int len);
+void	print(t_philosopher *philosopher, int msec, char *str);
+int		ft_strcmp(char *s1, char *s2, size_t n);
 
 /* Initialising = Putting the Arguments in Structs */
 int		initialize_table(t_game *table, int argc, char **argv);
@@ -66,6 +69,11 @@ void	initialize_forks(t_game *table);
 void	*dinner(void *philo);
 void	dining(t_game *game, t_philosopher *philosopher, int right, int left);
 void	dine(t_game *game);
+
+/* Time Keeping */
+void	check_dead(t_game *game, t_philosopher *philosopher);
+int		get_clock(t_game *game);
+void	wake_up(t_game *game, int seconds);
 
 
 #endif

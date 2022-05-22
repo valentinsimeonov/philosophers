@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 19:30:45 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/22 19:44:50 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ int	main(int argc, char **argv)
 	printf("Reached the end of Main");
 	return (0);
 }
-
-
-
-void	wake_up(t_game)
-
 
 
 
@@ -104,6 +99,4 @@ int		main()
 	pthread_mutex_destroy(&mutex);
 	printf("The Final Number of %d\n", mails);
 	return(0);
-}
-
-*/
+} */

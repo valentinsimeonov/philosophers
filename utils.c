@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:33:40 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/20 21:08:11 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/22 19:50:10 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_sum(int *arr, int len)
 void	print(t_philosopher *philosopher, int msec, char *str)
 {
 	pthread_mutex_lock(&(philosopher->to_game->m_print));
-	if (philosopher->to_game->end == -1 || ft_strncmp(str, "died", 4) == 0)
+	if (philosopher->to_game->end == -1 || ft_strcmp(str, "died", 4) == 0)
 		printf("%i %i %s\n", msec, philosopher->id, str);
 	pthread_mutex_unlock(&(philosopher->to_game->m_print));
 }
