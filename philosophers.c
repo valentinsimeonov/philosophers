@@ -6,14 +6,13 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/20 16:58:29 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/22 19:30:45 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-// number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
-
+/* number_of_philosophers time_to_die time_to_eat time_to_sleep meals(number_of_times_each_philosopher_must_eat) */
 
 int	main(int argc, char **argv)
 {
@@ -33,7 +32,6 @@ int	main(int argc, char **argv)
 	thread = malloc(sizeof(pthread_t *) * game.number_of_philos);
 	if (!thread)
 		return (-3);
-		
 	/* Creating the Threads */
 	while (i < game.number_of_philos)
 	{
@@ -46,24 +44,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	check_dead(t_game *game, t_philosopher *philosopher)
-{
-	int	miliseconds;
-	
-	pthread_mutex_lock(&(philosopher->m_eat));
-	miliseconds = get_clock(game);
-	if (miliseconds > philosopher->last_meal + game->time_to_die)
-	{
-		game->end = 1;
-		print(philosopher, miliseconds, "died");
-		pthread_mutex_unlock(&(philosopher->m_eat));
-	}
-	else
-	{
-		pthread_mutex_unlock(&(philosopher->m_eat));
-		game->end = -1;
-	}
-}
+
 
 void	wake_up(t_game)
 
