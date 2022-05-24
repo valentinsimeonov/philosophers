@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 19:44:50 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:10:49 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int	main(int argc, char **argv)
 	int				i;
 
 	i = 0;
-
-	/* if (!is_number_of_args(argc) || !is_args_positive(argc, argv) || !ft_isdigit(argc, argv)) */
-	// if (!is_number_of_args(argc) || !ft_isdigit(argc, argv))
-	if (!is_number_of_args(argc))
+	if (!is_number_of_args(argc) || !ft_isdigit(argc, argv))
 		return (-1);
 	if (!initialize_table(&game, argc, argv))
 		return (-2);
@@ -39,64 +36,9 @@ int	main(int argc, char **argv)
 		pthread_create(&thread[i], NULL, &dinner, philosopher);
 		i++;
 	}
-
+	dine(&game);
+	goodnight(&game, thread);
+	usleep(50);
 	printf("Reached the end of Main");
 	return (0);
 }
-
-
-
-
-/////   For Learning Purposes   ////
-/*
-int mails = 0;
-pthread_t mutex;
-
-void	*routine()
-{
-	int i;
-	
-	i = 0;
-	while (i < 1000000)
-	{
-		pthread_mutex_lock(&mutex);
-		mails++;
-		i++;
-		pthread_mutex_unlock(&mutex);
-	}
-	// printf("Test\n");
-	// sleep(2);
-	// printf("Second Print\n");
-}
-
-
-int		main()
-{
-	pthread_t t[4];
-	int		i;
-
-	i = 0;
-	pthread_mutex_init(&mutex, NULL);
-	while (i < 4)
-	{
-		if (pthread_create(&t[i], NULL, &routine, NULL) != 0)
-		{
-			return (1);
-		}
-		printf("Thread %d Created\n", i);
-		i++;
-	}
-	i = 0;
-	while (i < 4)
-	{
-		if (pthread_join(t[i], NULL) != 0)
-		{
-			return 2;
-		}
-		printf("Finished Joining Thread %d\n", i);
-		i++;
-	}
-	pthread_mutex_destroy(&mutex);
-	printf("The Final Number of %d\n", mails);
-	return(0);
-} */

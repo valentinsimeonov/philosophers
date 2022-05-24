@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 13:30:28 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 19:54:28 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 10:43:49 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ void	*dinner(void *philo)
 	game = philosopher->to_game;
 	left = philosopher->id - 1;
 	right = philosopher->id;
-	/* Edge Case 1  - If there is Only One Philospher at the Table */
 	if (right == game->number_of_philos)
+		right = 0;
+	/* Edge Case 1  - If there is Only One Philospher at the Table */
+	if (game->number_of_philos == 1)
 	{
 		pthread_mutex_lock(game->m_forks);
-		print(philosopher, get_clock(game), "has Taken a Fork");
+		print(philosopher, get_clock(game), "has taken a fork");
 		return (NULL);
 	}
 	/* Skipping every other Philosopher so that some of them can Start eating at the Same Time,EX: Philo 1 and Philo 3 Start Eating at the Same time as they Have Two Forks Available */
@@ -40,7 +42,7 @@ void	*dinner(void *philo)
 
 void dining(t_game *game, t_philosopher *philosopher, int right, int left)
 {
-	while (((game->end == -1) && (game->number_of_philos == -1)) \
+	while ((game->end == -1 && game->number_of_philos == -1) \
 	|| game->meals != philosopher->meals)
 	{
 		pthread_mutex_lock(game->m_forks + left);
@@ -84,7 +86,7 @@ void	dine(t_game *game)
 		while (i < game->number_of_philos && game->end == -1 && ft_sum(array, game->number_of_philos) < nbr_of_philos)
 		{
 			philosopher = game->to_philosopher[i];
-			// check_if_dead(game, philosopher);
+			check_if_dead(game, philosopher);
 			if (philosopher->meals == game->meals)
 				array[i] = 1;
 			i++;

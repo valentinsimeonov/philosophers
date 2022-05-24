@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:06 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 16:31:54 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 09:36:14 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ Initialising the Mutex for Forks */
 
 void	initialize_forks(t_game *game)
 {
-	int		j;
+	int		i;
 
-	j = 0;
+	i = 0;
 	game->m_forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * game->number_of_philos);
-	while (j < game->number_of_philos)
+	while (i < game->number_of_philos)
 	{
-		pthread_mutex_init(game->m_forks + j, NULL);
-		j++;
+		pthread_mutex_init(game->m_forks + i, NULL);
+		i++;
 	}
 }
 
@@ -63,7 +63,7 @@ void	initialize_philosophers(t_game *game)
 	i = 0;
 	while (i < game->number_of_philos)
 	{
-		philosopher = (t_philosopher *)malloc(sizeof(t_philosopher));
+		philosopher = (t_philosopher *)malloc(sizeof(t_philosopher));	
 		philosopher->to_game = game;
 		philosopher->id = i + 1;
 		philosopher->last_meal = 0;
@@ -73,4 +73,3 @@ void	initialize_philosophers(t_game *game)
 		i++;
 	}
 }
-

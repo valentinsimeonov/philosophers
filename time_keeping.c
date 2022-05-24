@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chronos.c                                          :+:      :+:    :+:   */
+/*   time_keeping.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 19:28:08 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/22 19:43:54 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 10:09:41 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	check_dead(t_game *game, t_philosopher *philosopher)
+void	check_if_dead(t_game *game, t_philosopher *philosopher)
 {
 	int	miliseconds;
 	
@@ -40,12 +40,12 @@ int		get_clock(t_game *game)
 	if ((game->start).tv_usec < current_time.tv_usec)
 	{
 		miliseconds = (current_time.tv_usec - (game->start).tv_usec) / 1000;
-		miliseconds += (current_time.tv_usec - (game->start).tv_sec) * 1000;
+		miliseconds += (current_time.tv_sec - (game->start).tv_sec) * 1000;
 	}
 	else
 	{
 		miliseconds = 1000 + (current_time.tv_usec - (game->start).tv_usec) / 1000;
-		miliseconds += (current_time.tv_sec - (game->start). tv_sec - 1) * 1000;
+		miliseconds += (current_time.tv_sec - (game->start).tv_sec - 1) * 1000;
 	}
 	return (miliseconds);
 }
