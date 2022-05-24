@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 19:28:08 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 10:09:41 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:49:36 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_if_dead(t_game *game, t_philosopher *philosopher)
 {
 	int	miliseconds;
-	
+
 	pthread_mutex_lock(&(philosopher->m_eat));
 	miliseconds = get_clock(game);
 	if (miliseconds > philosopher->last_meal + game->time_to_die)
@@ -31,7 +31,7 @@ void	check_if_dead(t_game *game, t_philosopher *philosopher)
 	}
 }
 
-int		get_clock(t_game *game)
+int	get_clock(t_game *game)
 {
 	struct timeval	current_time;
 	int				miliseconds;
@@ -44,8 +44,10 @@ int		get_clock(t_game *game)
 	}
 	else
 	{
-		miliseconds = 1000 + (current_time.tv_usec - (game->start).tv_usec) / 1000;
-		miliseconds += (current_time.tv_sec - (game->start).tv_sec - 1) * 1000;
+		miliseconds = 1000 + \
+		(current_time.tv_usec - (game->start).tv_usec) / 1000;
+		miliseconds += \
+		(current_time.tv_sec - (game->start).tv_sec - 1) * 1000;
 	}
 	return (miliseconds);
 }

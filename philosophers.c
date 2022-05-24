@@ -6,13 +6,11 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 13:10:49 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:47:03 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-/* number_of_philosophers time_to_die time_to_eat time_to_sleep meals(number_of_times_each_philosopher_must_eat) */
 
 int	main(int argc, char **argv)
 {
@@ -29,7 +27,6 @@ int	main(int argc, char **argv)
 	thread = malloc(sizeof(pthread_t *) * game.number_of_philos);
 	if (!thread)
 		return (-3);
-	/* Creating the Threads */
 	while (i < game.number_of_philos)
 	{
 		philosopher = game.to_philosopher[i];

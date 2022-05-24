@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:03:34 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 10:26:41 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:42:18 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ void	join_threads(t_game *game, pthread_t *thread)
 void	free_philosophers(t_game *game)
 {
 	int	i;
-	// t_philosopher	*philosopher;
 
 	i = 0;
 	while (i < game->number_of_philos)
 	{
-		// free((philosopher *)game->to_philosopher[i]);
 		free(game->to_philosopher[i]);
 		i++;
 	}

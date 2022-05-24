@@ -6,13 +6,17 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 13:30:28 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 10:43:49 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:53:00 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-/* Telling each Philosopher When to Start Eating by Assigning them the Forks */
+/*Telling each Philosopher When to Start Eating by Assigning them the Forks*/
+	/*Edge Case 1  - If there is Only One Philospher at the Table */
+	/*Skipping every other Philosopher so that some of them can Start */
+	/*eating at the Same Time,EX: Philo 1 and Philo 3 Start Eating at the */
+	/*Same time as they Have Two Forks Available */
 void	*dinner(void *philo)
 {
 	t_philosopher	*philosopher;
@@ -26,21 +30,19 @@ void	*dinner(void *philo)
 	right = philosopher->id;
 	if (right == game->number_of_philos)
 		right = 0;
-	/* Edge Case 1  - If there is Only One Philospher at the Table */
 	if (game->number_of_philos == 1)
 	{
 		pthread_mutex_lock(game->m_forks);
 		print(philosopher, get_clock(game), "has taken a fork");
 		return (NULL);
 	}
-	/* Skipping every other Philosopher so that some of them can Start eating at the Same Time,EX: Philo 1 and Philo 3 Start Eating at the Same time as they Have Two Forks Available */
 	if (philosopher->id % 2 == 0)
 		usleep(game->time_to_eat * 500);
 	dining(game, philosopher, right, left);
 	return (NULL);
 }
 
-void dining(t_game *game, t_philosopher *philosopher, int right, int left)
+void	dining(t_game *game, t_philosopher *philosopher, int right, int left)
 {
 	while ((game->end == -1 && game->number_of_philos == -1) \
 	|| game->meals != philosopher->meals)
@@ -76,14 +78,13 @@ void	dine(t_game *game)
 	nbr_of_philos = game->number_of_philos;
 	array = (int *)malloc(sizeof(int) * nbr_of_philos);
 	while (i < nbr_of_philos)
-	{
-		array[i] = 0;
-		i++;
-	}
-	while (game->end == -1 && ft_sum(array, game->number_of_philos) < game->number_of_philos)
+		array[i++] = 0;
+	while (game->end == -1 && ft_sum(array, game->number_of_philos) \
+	< game->number_of_philos)
 	{
 		i = 0;
-		while (i < game->number_of_philos && game->end == -1 && ft_sum(array, game->number_of_philos) < nbr_of_philos)
+		while (i < game->number_of_philos && game->end == -1 && \
+		ft_sum(array, game->number_of_philos) < nbr_of_philos)
 		{
 			philosopher = game->to_philosopher[i];
 			check_if_dead(game, philosopher);

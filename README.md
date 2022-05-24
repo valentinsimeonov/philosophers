@@ -16,10 +16,13 @@ Steps Necessary in Building the Program:
 1. Argument Checkers
 2. Initialize Arguments into Structs
 3. Create the Threads
-4. 
-
+4. Set the Ground Rules for the "Game"
+5. Grab and Handle Time
+6. Create the Mutexes for Forks, Eating and Printing
+7. Destroy Mutexes, Free Allocated Memmory
 
 
 Random:
 1. Add "-pthread" to tasks.json File to be able to Create and Join Threads, otherwise must use the -pthread Flag when Compiling (gcc -g -pthread file.c)
 2. gcc -S filename.c  Compiles C Code into Assembly Code(.s file)
+3.  

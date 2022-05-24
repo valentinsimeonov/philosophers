@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:33:40 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 10:23:26 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:50:07 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_sum(int *arr, int len)
 {
 	int		i;
 	int		sum;
-	
+
 	i = 0;
 	sum = 0;
 	while (i < len)
@@ -60,7 +60,7 @@ void	print(t_philosopher *philosopher, int msec, char *str)
 	pthread_mutex_unlock(&(philosopher->to_game->m_print));
 }
 
-int		ft_strncmp(char *s1, char *s2, size_t n)
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
 	size_t	i;
 
