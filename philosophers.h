@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:55 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 10:18:02 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:46:10 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	initialize_forks(t_game *game);
 
 /* The Play */
 void	*dinner(void *philo);
-void	dining(t_game *game, t_philosopher *philosopher, int right, int left);
-void	dine(t_game *game);
+void	at_the_table(t_game *game, t_philosopher *philosopher, int right, int left);
+void	getting_forks(t_game *game);
 
 /* Time Keeping */
 void	check_if_dead(t_game *game, t_philosopher *philosopher);

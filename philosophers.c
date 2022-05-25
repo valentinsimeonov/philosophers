@@ -6,7 +6,7 @@
 /*   By: vsimeono <vsimeono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:53:51 by vsimeono          #+#    #+#             */
-/*   Updated: 2022/05/24 14:47:03 by vsimeono         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:10:25 by vsimeono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	main(int argc, char **argv)
 		pthread_create(&thread[i], NULL, &dinner, philosopher);
 		i++;
 	}
-	dine(&game);
+	getting_forks(&game);
 	goodnight(&game, thread);
 	usleep(50);
-	printf("Reached the end of Main");
 	return (0);
 }
